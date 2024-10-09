@@ -3,9 +3,9 @@ import "./globals.css";
 import { Nunito, Roboto_Mono } from "next/font/google";
 
 const nunito = Nunito({
-  subsets: ["latin"],
-  display: "swap",
+  subsets: ["cyrillic"],
   variable: "--font-nunito-sans",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 const roboto_mono = Roboto_Mono({
   subsets: ["latin"],
