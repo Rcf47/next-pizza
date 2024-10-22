@@ -29,6 +29,9 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   onChange,
   defaultValue,
 }) => {
+  const [showAll, setShowAll] = React.useState(false);
+
+  const list = showAll ? items : items.slice(0, limit);
   return (
     <div className={className}>
       <p className="font-bold mb-3">{title}</p>
@@ -39,7 +42,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
         />
       </div>
       <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
-        {items.map((item) => (
+        {list.map((item) => (
           <FilterCheckbox
             onCheckedChange={(ids) => console.log(ids)}
             checked={false}
@@ -50,6 +53,16 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
           />
         ))}
       </div>
+      {items.length > limit && (
+        <div className={showAll ? "border-t border-t-neutral-100 mt-4" : ""}>
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="text-primary mt-3"
+          >
+            {showAll ? "Скрыть" : "+ Показать все"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
