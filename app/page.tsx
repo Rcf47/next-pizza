@@ -1,6 +1,5 @@
 import { Container } from "@/components/shared/container";
 import { Filters } from "@/components/shared/filters";
-import { ProductCard } from "@/components/shared/product-card";
 import { ProductsGroupList } from "@/components/shared/products-group-list";
 import { Title } from "@/components/shared/title";
 import { TopBar } from "@/components/shared/top-bar";
@@ -66,10 +65,10 @@ export default function Home() {
                   items: [{ price: 390 }],
                 },
               ]}
-              categoryId={1}
+              categoryId={0}
             />
             <ProductsGroupList
-              title="Завтрак"
+              title="Комбо"
               items={[
                 {
                   id: 7,
