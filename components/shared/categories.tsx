@@ -34,7 +34,7 @@ export const Categories: React.FC<Props> = ({ className }) => {
               "bg-white shadow-md shadown-gray-200 text-primary"
           )}
           key={uuidv4()}
-          href=""
+          href={`/#${category}`}
         >
           <button>{category}</button>
         </Link>
