@@ -39,6 +39,21 @@ model Product {
   categoryId Int
 
   ingredients Ingredient[]
+  items ProductItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductItem {
+  id Int @id @default(autoincrement())
+
+  price Int
+  size Int?
+  pizzaType Int?
+
+  product Product @relation(fields: [productId], references: [id])
+  productId Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -52,6 +67,18 @@ model Ingredient {
   imageUrl String
 
   products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+
+  totalAmount Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
