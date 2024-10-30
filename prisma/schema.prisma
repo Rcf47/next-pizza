@@ -16,12 +16,16 @@ model User {
   password String
   role     UserRole @default(USER)
 
-  cart Cart?
+  provider   String?
+  providerId String?
+
+  cart             Cart?
+  order            Order[]
+  verificationCode VerificationCode?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   cartId    Int
-  Order     Order[]
 }
 
 model Category {
@@ -131,6 +135,7 @@ model Order {
   email    String
   phone    String
   comment  String?
+
 }
 
 enum OrderStatus {
