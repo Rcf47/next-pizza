@@ -14,6 +14,7 @@ model User {
   fullName String
   email    String   @unique
   password String
+  role     UserRole @default(USER)
 
   cart Cart?
 
@@ -136,4 +137,9 @@ enum OrderStatus {
   PENDING
   SUCCEEDED
   CANCELLED
+}
+
+enum UserRole {
+  USER
+  ADMIN
 }
