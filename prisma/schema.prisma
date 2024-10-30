@@ -25,7 +25,6 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  cartId    Int
 }
 
 model Category {
