@@ -12,6 +12,13 @@ async function generateData() {
         role: "USER",
       },
       {
+        fullName: "Vadim",
+        email: "vadim@test.ru",
+        password: hashSync("111111", 10),
+        verified: new Date(),
+        role: "USER",
+      },
+      {
         fullName: "Admin",
         email: "admin@test.ru",
         password: hashSync("111111", 10),
