@@ -18,6 +18,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
       )}
       <div
         className={cn("flex rounded-2xl flex-1 justify-between relative h-11")}
+        )}
       >
         <Search className="absolute top-1/2 translate-y-[-50%] left-3 h-5 text-gray-400" />
         <input
@@ -26,11 +27,18 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
           placeholder="Найти пиццу..."
           onFocus={() => setFocused(true)}
         />
+        <div
+          className={cn(
+            "absolute w-full bg-white rounded-xl py-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30",
+            focused && "visible opacity-100 top-12"
+          )}
+        >
           <Link href="/product/1">
             <div className="px-3 py-2 hover:bg primary/10 cursor-pointer">
               Пицца 1
             </div>
           </Link>
+        </div>
       </div>
     </>
   );
