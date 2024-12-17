@@ -16,6 +16,22 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
   useClickAway(ref, () => {
     setFocused(false);
   });
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        console.log("press escape");
+      }
+      if (event.key === "Escape" && focused) {
+        console.log("press escape");
+        setFocused(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [focused]);
   return (
     <>
       {focused && (
