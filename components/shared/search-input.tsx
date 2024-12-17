@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { useClickAway } from "react-use";
 
 interface Props {
   className?: string;
@@ -11,13 +12,20 @@ interface Props {
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
   const [focused, setFocused] = React.useState(false);
+  const ref = React.useRef(null);
+  useClickAway(ref, () => {
+    setFocused(false);
+  });
   return (
     <>
       {focused && (
         <div className="fixed top-0 left-0 bottom-0 right-0 bg-black/50 z-30" />
       )}
       <div
-        className={cn("flex rounded-2xl flex-1 justify-between relative h-11")}
+        ref={ref}
+        className={cn(
+          "flex rounded-2xl flex-1 justify-between relative h-11 z-30",
+          className
         )}
       >
         <Search className="absolute top-1/2 translate-y-[-50%] left-3 h-5 text-gray-400" />
