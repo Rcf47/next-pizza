@@ -13,23 +13,20 @@ interface Props {
 export const SearchInput: React.FC<Props> = ({ className }) => {
   const [focused, setFocused] = React.useState(false);
   const ref = React.useRef(null);
+
   useClickAway(ref, () => {
     setFocused(false);
   });
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        console.log("press escape");
-      }
       if (event.key === "Escape" && focused) {
-        console.log("press escape");
         setFocused(false);
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [focused]);
   return (
@@ -57,10 +54,11 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
             focused && "visible opacity-100 top-12"
           )}
         >
-          <Link href="/product/1">
-            <div className="px-3 py-2 hover:bg primary/10 cursor-pointer">
-              Пицца 1
-            </div>
+          <Link
+            className="px-3 py-2 hover:bg-primary/10 cursor-pointer"
+            href="/product/1"
+          >
+            <div>Пицца 1</div>
           </Link>
         </div>
       </div>
