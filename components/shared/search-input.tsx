@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { Api } from "@/services/api-client";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
+  const [searchQuery, setSearchQuery] = React.useState("");
   const [focused, setFocused] = React.useState(false);
   const ref = React.useRef(null);
 
@@ -19,6 +21,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
     setFocused(false);
   });
   React.useEffect(() => {
+    Api.products.search(searchQuery);
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && focused) {
         setFocused(false);
@@ -29,7 +32,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [focused]);
+  }, [focused, searchQuery]);
   return (
     <>
       {focused && (
@@ -48,6 +51,8 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
           type="text"
           placeholder="Найти пиццу..."
           onFocus={() => setFocused(true)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
         <div
           className={cn(
