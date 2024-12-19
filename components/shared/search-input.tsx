@@ -6,7 +6,7 @@ import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useClickAway } from "react-use";
+import { useClickAway, useDebounce } from "react-use";
 
 interface Props {
   className?: string;
@@ -15,13 +15,22 @@ interface Props {
 export const SearchInput: React.FC<Props> = ({ className }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [focused, setFocused] = React.useState(false);
+  const [products, setProducts] = React.useState<Product[]>([]);
   const ref = React.useRef(null);
 
   useClickAway(ref, () => {
     setFocused(false);
   });
+  useDebounce(
+    () => {
+      Api.products.search(searchQuery).then((items) => {
+        setProducts(items);
+      });
+    },
+    250,
+    [searchQuery]
+  );
   React.useEffect(() => {
-    Api.products.search(searchQuery);
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && focused) {
         setFocused(false);
@@ -32,7 +41,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [focused, searchQuery]);
+  }, [focused]);
   return (
     <>
       {focused && (
