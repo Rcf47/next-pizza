@@ -16,7 +16,7 @@ interface Props {
   limit?: number;
   loading?: boolean;
   searchInputPlaceholder?: string;
-  onChange?: (values: string[]) => void;
+  onClickCheckbox?: (id: string) => void;
   defaultValue?: string[];
   className?: string;
 }
@@ -29,7 +29,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   searchInputPlaceholder = "Поиск...",
   className,
   loading,
-  onChange,
+  onClickCheckbox,
   defaultValue,
 }) => {
   const [showAll, setShowAll] = React.useState(false);
@@ -40,6 +40,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
         item.text.toLowerCase().includes(searchValue.toLocaleLowerCase())
       )
     : items.slice(0, limit);
+
   const onChangeSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
@@ -71,7 +72,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
       <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
         {list.map((item) => (
           <FilterCheckbox
-            onCheckedChange={(ids) => console.log(ids)}
+            onCheckedChange={() => onClickCheckbox?.(item.value)}
             checked={false}
             key={uuidv4()}
             value={item.value}
