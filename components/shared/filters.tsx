@@ -13,7 +13,8 @@ interface Props {
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
-  const { ingredients, loading } = useFilterIngredients();
+  const { ingredients, loading, onToggleId, selectedIds } =
+    useFilterIngredients();
   const items = ingredients.map((ingredient) => ({
     value: String(ingredient.id),
     text: ingredient.name,
@@ -51,7 +52,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
           defaultItems={items.slice(0, 6)}
           items={items}
           loading={loading}
-          onClickCheckbox={(id) => console.log(id)}
+          onClickCheckbox={onToggleId}
+          selectedIds={selectedIds}
         />
       </div>
     </div>
