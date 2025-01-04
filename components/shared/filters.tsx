@@ -7,6 +7,7 @@ import { Title } from "@/components/shared/title";
 import { Input } from "@/components/ui";
 import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 import React from "react";
+import { useSet } from "react-use";
 
 interface Props {
   className?: string;
@@ -18,8 +19,10 @@ interface PriceProps {
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
-  const { ingredients, loading, onToggleId, selectedIds } =
+  const { ingredients, loading, onToggleId, selectedValues } =
     useFilterIngredients();
+
+  const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]));
   const [price, setPrice] = React.useState<PriceProps>({
     priceFrom: 0,
     priceTo: 1000,
@@ -37,10 +40,19 @@ export const Filters: React.FC<Props> = ({ className }) => {
   return (
     <div className={className}>
       <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
-      <div className="flex flex-col gap-4">
-        <FilterCheckbox name="canCollect" text="Можно собирать" value="1" />
-        <FilterCheckbox name="new" text="Новинки" value="2" />
-      </div>
+
+      <CheckboxFiltersGroup
+        name="sizes"
+        className="mb-5"
+        title="Размеры"
+        onClickCheckbox={toggleSizes}
+        selectedValues={sizes}
+        items={[
+          { text: "20см", value: "20" },
+          { text: "30см", value: "30" },
+          { text: "40см", value: "40" },
+        ]}
+      />
       <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
         <p className="font-bold mb-3">Цена от и до:</p>
         <div className="flex gap-3 mb-5">
@@ -82,7 +94,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
           items={items}
           loading={loading}
           onClickCheckbox={onToggleId}
-          selectedIds={selectedIds}
+          selectedValues={selectedValues}
           name="ingredients"
         />
       </div>
