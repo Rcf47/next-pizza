@@ -1,7 +1,6 @@
 "use client";
 
 import { CheckboxFiltersGroup } from "@/components/shared/checkbox-filters-group";
-import { FilterCheckbox } from "@/components/shared/filter-checkbox";
 import { RangeSlider } from "@/components/shared/range-slider";
 import { Title } from "@/components/shared/title";
 import { Input } from "@/components/ui";
