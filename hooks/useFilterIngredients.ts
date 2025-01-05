@@ -12,13 +12,13 @@ interface ReturnProps {
   onToggleId: (id: string) => void;
 }
 
-export const useFilterIngredients = (): ReturnProps => {
+export const useFilterIngredients = (values: string[] = []): ReturnProps => {
   const [ingredients, setIngredients] = React.useState<
     ReturnProps["ingredients"]
   >([]);
   const [loading, setLoading] = React.useState(true);
 
-  const [selectedValues, { toggle }] = useSet(new Set<string>([]));
+  const [selectedValues, { toggle }] = useSet(new Set<string>(values));
 
   React.useEffect(() => {
     async function fetchIngredients() {
