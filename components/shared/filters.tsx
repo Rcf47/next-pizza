@@ -8,6 +8,7 @@ import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 import React from "react";
 import { useSet } from "react-use";
 import qs from "qs";
+import { useRouter } from "next/navigation";
 
 interface Props {
   className?: string;
@@ -19,6 +20,7 @@ interface PriceProps {
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+  const router = useRouter();
   const { ingredients, loading, onToggleId, selectedValues } =
     useFilterIngredients();
 
@@ -37,6 +39,17 @@ export const Filters: React.FC<Props> = ({ className }) => {
   const updatePrice = (name: keyof PriceProps, value: number) => {
     setPrice({ ...price, [name]: value });
   };
+
+  React.useEffect(() => {
+    const filters = {
+      ...price,
+      pizzaTypes: Array.from(pizzaTypes),
+      sizes: Array.from(sizes),
+      ingredients: Array.from(selectedValues),
+    };
+    const query = qs.stringify(filters, { arrayFormat: "comma" });
+    router.push(`?${query}`);
+  }, [price, pizzaTypes, sizes, selectedValues, router]);
 
   return (
     <div className={className}>
