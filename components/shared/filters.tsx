@@ -7,6 +7,7 @@ import { Input } from "@/components/ui";
 import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 import React from "react";
 import { useSet } from "react-use";
+import qs from "qs";
 
 interface Props {
   className?: string;
