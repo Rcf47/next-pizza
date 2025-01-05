@@ -14,8 +14,8 @@ interface Props {
 }
 
 interface PriceProps {
-  priceFrom: number;
-  priceTo: number;
+  priceFrom?: number;
+  priceTo?: number;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
@@ -27,10 +27,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
     new Set<string>([])
   );
 
-  const [price, setPrice] = React.useState<PriceProps>({
-    priceFrom: 0,
-    priceTo: 1000,
-  });
+  const [price, setPrice] = React.useState<PriceProps>({});
 
   const items = ingredients.map((ingredient) => ({
     value: String(ingredient.id),
@@ -97,7 +94,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
           min={0}
           max={1000}
           step={10}
-          value={[price.priceFrom, price.priceTo]}
+          value={[price.priceFrom || 0, price.priceTo || 1000]}
           onValueChange={([priceFrom, priceTo]) =>
             setPrice({ priceFrom, priceTo })
           }
