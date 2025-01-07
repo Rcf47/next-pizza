@@ -120,20 +120,48 @@ export const ingredients = [
 export const products = [
   {
     name: "Пепперони фреш",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:233x233/11EE7D61304FAF5A98A6958F2BB2D260.webp",
-    categoryId: 2,
+    imageUrl: "/pizza/peperonifresh.avif",
+    categoryId: 1,
   },
+
   {
     name: "Сырная",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:233x233/11EE7D610CF7E265B7C72BE5AE757CA7.webp",
-    categoryId: 2,
+    imageUrl: "/pizza/sirnaya.avif",
+    categoryId: 1,
   },
   {
     name: "Чоризо фреш",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp",
+    imageUrl: "/pizza/chorizofresh.avif",
+    categoryId: 1,
+  },
+  {
+    name: "Омлет с ветчиной и грибами",
+    imageUrl: "/breakfast/omletsvetchinoyigribami.avif",
+    categoryId: 2,
+  },
+  {
+    name: "Омлет с пепперони",
+    imageUrl: "/breakfast/omletspeperoni.avif",
+    categoryId: 2,
+  },
+  {
+    name: "Омлет сырный",
+    imageUrl: "/breakfast/omletsirniy.avif",
+    categoryId: 2,
+  },
+  {
+    name: "Креветки",
+    imageUrl: "/snacks/krevetki.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Омлет с ветчиной и грибами в пите",
+    imageUrl: "/snacks/omletsvetchinoyigribamivpite.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Омлет с беконом в пите",
+    imageUrl: "/snacks/omletsbekonomvpite.avif",
     categoryId: 3,
   },
 ];
