@@ -17,7 +17,6 @@ export default async function Home() {
       },
     },
   });
-  console.log(categories[1]);
   return (
     <>
       <Container className="mt-10">
