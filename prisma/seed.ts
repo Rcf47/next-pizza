@@ -81,6 +81,12 @@ async function generateData() {
       generatePizza({ productId: 7 }),
       generatePizza({ productId: 8 }),
       generatePizza({ productId: 9 }),
+      generatePizza({ productId: 10 }),
+      generatePizza({ productId: 11 }),
+      generatePizza({ productId: 12 }),
+      generatePizza({ productId: 13 }),
+      generatePizza({ productId: 14 }),
+      generatePizza({ productId: 15 }),
     ],
   });
   await prisma.cart.createMany({

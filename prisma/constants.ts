@@ -164,4 +164,34 @@ export const products = [
     imageUrl: "/snacks/omletsbekonomvpite.avif",
     categoryId: 3,
   },
+  {
+    name: "Шоколадный молочный коктейль",
+    imageUrl: "/cocktail/shokoladnomolochniykoktel.avif",
+    categoryId: 4,
+  },
+  {
+    name: "Классический молочный коктейль",
+    imageUrl: "/cocktail/klassicheskiykoktel.avif",
+    categoryId: 4,
+  },
+  {
+    name: "Клубничный молочный коктейль",
+    imageUrl: "/cocktail/klubnichniykoktel4.png",
+    categoryId: 4,
+  },
+  {
+    name: "Какао",
+    imageUrl: "/drinks/kakao.avif",
+    categoryId: 5,
+  },
+  {
+    name: "Добрый Кола",
+    imageUrl: "/drinks/dobriykola.avif",
+    categoryId: 5,
+  },
+  {
+    name: "Вода BonaAqua негазированная",
+    imageUrl: "/drinks/vodabonaqua.avif",
+    categoryId: 5,
+  },
 ];
