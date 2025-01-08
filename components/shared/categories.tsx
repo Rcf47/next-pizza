@@ -18,17 +18,17 @@ export const Categories: React.FC<Props> = ({ items, className }) => {
     <div
       className={cn("inline-flex gap-1 bg-gray-50 p-1 rounded-2xl", className)}
     >
-      {items.map((category, index) => (
+      {items.map(({ name, id }) => (
         <Link
           className={cn(
             "flex items-center font-bold h-11 rounded-2xl px-5",
-            categoryActiveId === index &&
+            categoryActiveId === id &&
               "bg-white shadow-md shadown-gray-200 text-primary"
           )}
           key={uuidv4()}
-          href={`/#${category}`}
+          href={`/#${name}`}
         >
-          <button>{category.name}</button>
+          <button>{name}</button>
         </Link>
       ))}
     </div>
