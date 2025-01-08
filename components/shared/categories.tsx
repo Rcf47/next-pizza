@@ -2,31 +2,23 @@
 
 import { cn } from "@/lib/utils";
 import { useCategoryStore } from "@/store/category";
+import { Category } from "@prisma/client";
 import Link from "next/link";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 interface Props {
+  items: Category[];
   className?: string;
 }
-const categories = [
-  "Пиццы",
-  "Комбо",
-  "Закуски",
-  "Коктейли",
-  "Кофе",
-  "Напитки",
-  "Десерты",
-  "Десерты",
-];
 
-export const Categories: React.FC<Props> = ({ className }) => {
+export const Categories: React.FC<Props> = ({ items, className }) => {
   const categoryActiveId = useCategoryStore((state) => state.activeId);
   return (
     <div
       className={cn("inline-flex gap-1 bg-gray-50 p-1 rounded-2xl", className)}
     >
-      {categories.map((category, index) => (
+      {items.map((category, index) => (
         <Link
           className={cn(
             "flex items-center font-bold h-11 rounded-2xl px-5",
@@ -36,7 +28,7 @@ export const Categories: React.FC<Props> = ({ className }) => {
           key={uuidv4()}
           href={`/#${category}`}
         >
-          <button>{category}</button>
+          <button>{category.name}</button>
         </Link>
       ))}
     </div>
