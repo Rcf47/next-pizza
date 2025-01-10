@@ -1,10 +1,10 @@
 "use client";
 
+import { Title } from "@/components/shared/title";
 import { Dialog } from "@/components/ui";
 import { DialogContent } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { Product } from "@prisma/client";
-import { Title } from "@radix-ui/react-dialog";
 import React from "react";
 
 interface Props {
@@ -21,7 +21,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           className
         )}
       >
-        <Title>{product.name}</Title>
+        <Title text={product.name} size="md" />
       </DialogContent>
     </Dialog>
   );
