@@ -1,6 +1,6 @@
 "use client";
 
-import { Title } from "@/components/shared/title";
+import { ChooseProductForm } from "@/components/shared/choose-product-form";
 import { Dialog } from "@/components/ui";
 import { DialogContent } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
@@ -24,7 +24,11 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           className
         )}
       >
-        <Title text={product.name} size="md" />
+        <ChooseProductForm
+          imageUrl={product.imageUrl}
+          name={product.name}
+          ingredients={[]}
+        />
       </DialogContent>
     </Dialog>
   );
