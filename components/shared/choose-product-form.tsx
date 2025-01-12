@@ -7,16 +7,12 @@ interface Props {
   imageUrl: string;
   name: string;
   className?: string;
-  ingredients: any[];
-  items?: any[];
   onClickAdd?: VoidFunction;
 }
 
 export const ChooseProductForm: React.FC<Props> = ({
   imageUrl,
   name,
-  ingredients,
-  items,
   onClickAdd,
   className,
 }) => {
