@@ -1,6 +1,7 @@
 "use client";
 
 import { ProductWithRelations } from "@/@types/product";
+import { ChoosePizzaForm } from "@/components/shared/choose-pizza-form";
 import { ChooseProductForm } from "@/components/shared/choose-product-form";
 import { Dialog } from "@/components/ui";
 import { DialogContent } from "@/components/ui/dialog";
@@ -26,13 +27,13 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
         )}
       >
         {isPizzaForm ? (
-          "PizzaFrom"
-        ) : (
-          <ChooseProductForm
+          <ChoosePizzaForm
             imageUrl={product.imageUrl}
             name={product.name}
             ingredients={[]}
           />
+        ) : (
+          <ChooseProductForm imageUrl={product.imageUrl} name={product.name} />
         )}
       </DialogContent>
     </Dialog>
