@@ -2,7 +2,7 @@ import { GroupVariants } from "@/shared/components/shared/group-variants";
 import { PizzaImage } from "@/shared/components/shared/pizza-image";
 import { Title } from "@/shared/components/shared/title";
 import { Button } from "@/shared/components/ui";
-import { pizzaSizes } from "@/shared/constants/pizza";
+import { PizzaSize, pizzaSizes, PizzaType } from "@/shared/constants/pizza";
 import { cn } from "@/shared/lib/utils";
 import React from "react";
 
@@ -23,9 +23,12 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   onClickAdd,
   className,
 }) => {
+  const [size, setSize] = React.useState<PizzaSize>(20);
+  const [type, setType] = React.useState<PizzaType>(1);
+
   const textDetails = "30 см, традиционное тесто 30";
   const totalPrice = 350;
-  const size = 30;
+
   return (
     <div className={cn(className, "flex flex-1")}>
       <PizzaImage imageUrl={imageUrl} size={size} />
