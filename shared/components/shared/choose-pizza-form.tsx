@@ -2,15 +2,21 @@ import { GroupVariants } from "@/shared/components/shared/group-variants";
 import { PizzaImage } from "@/shared/components/shared/pizza-image";
 import { Title } from "@/shared/components/shared/title";
 import { Button } from "@/shared/components/ui";
-import { PizzaSize, pizzaSizes, PizzaType } from "@/shared/constants/pizza";
+import {
+  PizzaSize,
+  pizzaSizes,
+  PizzaType,
+  pizzaTypes,
+} from "@/shared/constants/pizza";
 import { cn } from "@/shared/lib/utils";
+import { Ingredient } from "@prisma/client";
 import React from "react";
 
 interface Props {
   imageUrl: string;
   name: string;
   className?: string;
-  ingredients: any[];
+  ingredients: Ingredient[];
   items?: any[];
   onClickAdd?: VoidFunction;
 }
@@ -35,11 +41,19 @@ export const ChoosePizzaForm: React.FC<Props> = ({
       <div className="w-[490px] bg-[#F7F6F5] p-7">
         <Title text={name} size="md" className="font-extrabold mb-1" />
         <p className="text-gray-400">{textDetails}</p>
-        <GroupVariants
-          items={pizzaSizes}
-          value={String(size)}
-          onClick={(value) => setSize(Number(value) as PizzaSize)}
-        />
+        <div className="flex flex-col gap-4 mt-5">
+          <GroupVariants
+            items={pizzaSizes}
+            value={String(size)}
+            onClick={(value) => setSize(Number(value) as PizzaSize)}
+          />
+          <GroupVariants
+            items={pizzaTypes}
+            value={String(type)}
+            onClick={(value) => setType(Number(value) as PizzaType)}
+          />
+        </div>
+        <div className="grid grid-cols-3 gap-3"></div>
         <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
           Добавить в корзину за {totalPrice} ₽
         </Button>
