@@ -35,7 +35,11 @@ export const ChoosePizzaForm: React.FC<Props> = ({
       <div className="w-[490px] bg-[#F7F6F5] p-7">
         <Title text={name} size="md" className="font-extrabold mb-1" />
         <p className="text-gray-400">{textDetails}</p>
-        <GroupVariants items={pizzaSizes} />
+        <GroupVariants
+          items={pizzaSizes}
+          value={String(size)}
+          onClick={(value) => setSize(Number(value) as PizzaSize)}
+        />
         <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
           Добавить в корзину за {totalPrice} ₽
         </Button>
