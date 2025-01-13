@@ -27,7 +27,6 @@ export const GroupVariants: React.FC<Props> = ({
     <div
       className={cn(
         className,
-        "flext justify-between bg-[#F3F3F7] rounded-3xl p-1 select-none"
         "flex justify-between bg-[#F3F3F7] rounded-3xl p-1 select-none"
       )}
     >
