@@ -1,7 +1,7 @@
-import { Container } from "@/components/shared/container";
-import { SearchInput } from "@/components/shared/search-input";
-import { Button } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { Container } from "@/shared/components/shared/container";
+import { SearchInput } from "@/shared/components/shared/search-input";
+import { Button } from "@/shared/components/ui";
+import { cn } from "@/shared/lib/utils";
 import { ArrowRight, ShoppingCart, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

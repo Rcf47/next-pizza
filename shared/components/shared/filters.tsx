@@ -1,11 +1,11 @@
 "use client";
 
-import { CheckboxFiltersGroup } from "@/components/shared/checkbox-filters-group";
-import { RangeSlider } from "@/components/shared/range-slider";
-import { Title } from "@/components/shared/title";
-import { Input } from "@/components/ui";
+import { CheckboxFiltersGroup } from "@/shared/components/shared/checkbox-filters-group";
+import { RangeSlider } from "@/shared/components/shared/range-slider";
+import { Title } from "@/shared/components/shared/title";
+import { Input } from "@/shared/components/ui";
 import React from "react";
-import { useQueryFilters, useIngredients, useFilters } from "@/hooks/";
+import { useQueryFilters, useIngredients, useFilters } from "@/shared/hooks/";
 
 interface Props {
   className?: string;

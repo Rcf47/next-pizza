@@ -2,8 +2,8 @@
 import {
   FilterChecboxProps,
   FilterCheckbox,
-} from "@/components/shared/filter-checkbox";
-import { Input, Skeleton } from "@/components/ui";
+} from "@/shared/components/shared/filter-checkbox";
+import { Input, Skeleton } from "@/shared/components/ui";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 

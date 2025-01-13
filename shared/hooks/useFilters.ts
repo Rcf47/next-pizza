@@ -1,4 +1,4 @@
-import { Filters } from "@/hooks/useQueryFilters";
+import { Filters } from "@/shared/hooks/useQueryFilters";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 import { useSet } from "react-use";

@@ -1,11 +1,11 @@
 "use client";
 
 import { useIntersection } from "react-use";
-import { ProductCard } from "@/components/shared/product-card";
-import { Title } from "@/components/shared/title";
-import { cn } from "@/lib/utils";
+import { ProductCard } from "@/shared/components/shared/product-card";
+import { Title } from "@/shared/components/shared/title";
+import { cn } from "@/shared/lib/utils";
 import React from "react";
-import { useCategoryStore } from "@/store/category";
+import { useCategoryStore } from "@/shared/store/category";
 
 interface Props {
   categoryId: number;

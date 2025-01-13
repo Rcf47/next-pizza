@@ -1,4 +1,4 @@
-import { PriceProps } from "@/hooks/useFilters";
+import { PriceProps } from "@/shared/hooks/useFilters";
 import { useRouter } from "next/navigation";
 import qs from "qs";
 import React from "react";
