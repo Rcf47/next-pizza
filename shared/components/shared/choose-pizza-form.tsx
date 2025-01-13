@@ -1,7 +1,9 @@
-import { PizzaImage } from "@/components/shared/pizza-image";
-import { Title } from "@/components/shared/title";
-import { Button } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { GroupVariants } from "@/shared/components/shared/group-variants";
+import { PizzaImage } from "@/shared/components/shared/pizza-image";
+import { Title } from "@/shared/components/shared/title";
+import { Button } from "@/shared/components/ui";
+import { pizzaSizes } from "@/shared/constants/pizza";
+import { cn } from "@/shared/lib/utils";
 import React from "react";
 
 interface Props {
@@ -30,6 +32,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
       <div className="w-[490px] bg-[#F7F6F5] p-7">
         <Title text={name} size="md" className="font-extrabold mb-1" />
         <p className="text-gray-400">{textDetails}</p>
+        <GroupVariants items={pizzaSizes} />
         <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
           Добавить в корзину за {totalPrice} ₽
         </Button>

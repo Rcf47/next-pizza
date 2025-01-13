@@ -1,6 +1,6 @@
-import { Title } from "@/components/shared/title";
-import { Button } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { Title } from "@/shared/components/shared/title";
+import { Button } from "@/shared/components/ui";
+import { cn } from "@/shared/lib/utils";
 import React from "react";
 
 interface Props {

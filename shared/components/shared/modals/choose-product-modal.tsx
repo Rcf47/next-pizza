@@ -1,11 +1,11 @@
 "use client";
 
 import { ProductWithRelations } from "@/@types/product";
-import { ChoosePizzaForm } from "@/components/shared/choose-pizza-form";
-import { ChooseProductForm } from "@/components/shared/choose-product-form";
-import { Dialog } from "@/components/ui";
-import { DialogContent } from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
+import { ChoosePizzaForm } from "@/shared/components/shared/choose-pizza-form";
+import { ChooseProductForm } from "@/shared/components/shared/choose-product-form";
+import { Dialog } from "@/shared/components/ui";
+import { DialogContent } from "@/shared/components/ui/dialog";
+import { cn } from "@/shared/lib/utils";
 import { useRouter } from "next/navigation";
 import React from "react";
 
