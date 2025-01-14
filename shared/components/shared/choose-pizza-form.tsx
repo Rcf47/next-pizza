@@ -1,4 +1,5 @@
 import { GroupVariants } from "@/shared/components/shared/group-variants";
+import { IngredientItem } from "@/shared/components/shared/ingredient-item";
 import { PizzaImage } from "@/shared/components/shared/pizza-image";
 import { Title } from "@/shared/components/shared/title";
 import { Button } from "@/shared/components/ui";
@@ -53,7 +54,17 @@ export const ChoosePizzaForm: React.FC<Props> = ({
             onClick={(value) => setType(Number(value) as PizzaType)}
           />
         </div>
-        <div className="grid grid-cols-3 gap-3"></div>
+        <div className="grid grid-cols-3 gap-3">
+          {ingredients.map((ingredient) => (
+            <IngredientItem
+              key={ingredient.id}
+              name={ingredient.name}
+              price={ingredient.price}
+              imageUrl={ingredient.imageUrl}
+              onClick={onClickAdd}
+            />
+          ))}
+        </div>
         <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
           Добавить в корзину за {totalPrice} ₽
         </Button>
