@@ -96,18 +96,29 @@ async function generateData() {
   //Сделал как обычные объекты, так и через функцию для практики
   await prisma.productItem.createMany({
     data: [
-      generatePizza({ productId: 1, pizzaType: 1, size: 20 }),
-      generatePizza({ productId: 1, pizzaType: 2, size: 30 }),
-      generatePizza({ productId: 1, pizzaType: 2, size: 40 }),
+      // Пицца Пепперони фреш
+      generatePizza({ productId: pizza1.id, pizzaType: 1, size: 20 }),
+      generatePizza({ productId: pizza1.id, pizzaType: 2, size: 30 }),
+      generatePizza({ productId: pizza1.id, pizzaType: 2, size: 40 }),
 
-      generatePizza({ productId: 2, pizzaType: 1, size: 20 }),
-      generatePizza({ productId: 2, pizzaType: 2, size: 30 }),
-      generatePizza({ productId: 2, pizzaType: 2, size: 40 }),
+      // Пицца Сырная
+      generatePizza({ productId: pizza2.id, pizzaType: 1, size: 20 }),
+      generatePizza({ productId: pizza2.id, pizzaType: 2, size: 30 }),
+      generatePizza({ productId: pizza2.id, pizzaType: 2, size: 40 }),
 
-      generatePizza({ productId: 3, pizzaType: 1, size: 20 }),
-      generatePizza({ productId: 3, pizzaType: 2, size: 30 }),
-      generatePizza({ productId: 3, pizzaType: 2, size: 40 }),
+      generatePizza({ productId: pizza2.id, pizzaType: 1, size: 20 }),
+      generatePizza({ productId: pizza2.id, pizzaType: 2, size: 30 }),
+      generatePizza({ productId: pizza2.id, pizzaType: 2, size: 40 }),
 
+      // Пицца Чоризо фреш
+      generatePizza({ productId: pizza3.id, pizzaType: 1, size: 20 }),
+      generatePizza({ productId: pizza3.id, pizzaType: 2, size: 30 }),
+      generatePizza({ productId: pizza3.id, pizzaType: 2, size: 40 }),
+
+      // Прочие продукты
+      generatePizza({ productId: 1 }),
+      generatePizza({ productId: 2 }),
+      generatePizza({ productId: 3 }),
       generatePizza({ productId: 4 }),
       generatePizza({ productId: 5 }),
       generatePizza({ productId: 6 }),
@@ -118,8 +129,6 @@ async function generateData() {
       generatePizza({ productId: 11 }),
       generatePizza({ productId: 12 }),
       generatePizza({ productId: 13 }),
-      generatePizza({ productId: 14 }),
-      generatePizza({ productId: 15 }),
     ],
   });
   await prisma.cart.createMany({
