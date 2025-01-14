@@ -60,6 +60,39 @@ async function generateData() {
     data: products,
   });
 
+  const pizza1 = await prisma.product.create({
+    data: {
+      name: "Пепперони фреш",
+      imageUrl: "/pizza/peperonifresh.avif",
+      categoryId: 1,
+      ingredients: {
+        connect: _ingredients.slice(0, 5),
+      },
+    },
+  });
+
+  const pizza2 = await prisma.product.create({
+    data: {
+      name: "Сырная",
+      imageUrl: "/pizza/sirnaya.avif",
+      categoryId: 1,
+      ingredients: {
+        connect: _ingredients.slice(5, 10),
+      },
+    },
+  });
+
+  const pizza3 = await prisma.product.create({
+    data: {
+      name: "Чоризо фреш",
+      imageUrl: "/pizza/chorizofresh.avif",
+      categoryId: 1,
+      ingredients: {
+        connect: _ingredients.slice(10, 40),
+      },
+    },
+  });
+
   //Сделал как обычные объекты, так и через функцию для практики
   await prisma.productItem.createMany({
     data: [
