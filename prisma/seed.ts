@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import { categories, ingredients, products } from "../prisma/constants";
+import { _ingredients, categories, products } from "../prisma/constants";
 import { prisma } from "../prisma/prisma-client";
 import { hashSync } from "bcrypt";
 
@@ -54,7 +54,7 @@ async function generateData() {
     data: categories,
   });
   await prisma.ingredient.createMany({
-    data: ingredients,
+    data: _ingredients,
   });
   await prisma.product.createMany({
     data: products,
