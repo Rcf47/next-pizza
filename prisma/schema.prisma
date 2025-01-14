@@ -42,13 +42,14 @@ model Category {
 model Product {
   id Int @id @default(autoincrement())
 
-  name       String
-  imageUrl   String
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  name     String
+  imageUrl String
 
   ingredients Ingredient[]
   items       ProductItem[]
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
