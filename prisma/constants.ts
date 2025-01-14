@@ -118,22 +118,6 @@ export const _ingredients = [
 
 export const products = [
   {
-    name: "Пепперони фреш",
-    imageUrl: "/pizza/peperonifresh.avif",
-    categoryId: 1,
-  },
-
-  {
-    name: "Сырная",
-    imageUrl: "/pizza/sirnaya.avif",
-    categoryId: 1,
-  },
-  {
-    name: "Чоризо фреш",
-    imageUrl: "/pizza/chorizofresh.avif",
-    categoryId: 1,
-  },
-  {
     name: "Омлет с ветчиной и грибами",
     imageUrl: "/breakfast/omletsvetchinoyigribami.avif",
     categoryId: 2,
