@@ -12,7 +12,7 @@ interface Props {
   onClick?: () => void;
 }
 
-export const Ingredient: React.FC<Props> = ({
+export const IngredientItem: React.FC<Props> = ({
   className,
   imageUrl,
   name,
@@ -35,6 +35,7 @@ export const Ingredient: React.FC<Props> = ({
       <Image width={110} height={110} src={imageUrl} alt="ingredient" />
       <span className="text-xs mb-1">{name}</span>
       <span className="font-bold">{price} ₽</span>
+      <p>hello world</p>
     </div>
   );
 };
