@@ -4,6 +4,7 @@ import { PizzaImage } from "@/shared/components/shared/pizza-image";
 import { Title } from "@/shared/components/shared/title";
 import { Button } from "@/shared/components/ui";
 import {
+  mapPizzaType,
   PizzaSize,
   pizzaSizes,
   PizzaType,
@@ -49,6 +50,10 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 
   const totalPrice = pizzaPrice + totalIngredientsPrice;
 
+  const handleClickAdd = () => {
+    onClickAddCart?.();
+  };
+
   return (
     <div className={cn(className, "flex flex-1")}>
       <PizzaImage imageUrl={imageUrl} size={size} />
@@ -81,7 +86,10 @@ export const ChoosePizzaForm: React.FC<Props> = ({
             ))}
           </div>
         </div>
-        <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+        <Button
+          onClick={handleClickAdd}
+          className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
+        >
           Добавить в корзину за {totalPrice} ₽
         </Button>
       </div>
