@@ -1,6 +1,5 @@
 import { cn } from "@/shared/lib/utils";
 import { CircleCheck } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 
 interface Props {
