@@ -10,7 +10,7 @@ import {
   pizzaTypes,
 } from "@/shared/constants/pizza";
 import { cn } from "@/shared/lib/utils";
-import { Ingredient } from "@prisma/client";
+import { Ingredient, ProductItem } from "@prisma/client";
 import React from "react";
 import { useSet } from "react-use";
 
@@ -19,7 +19,7 @@ interface Props {
   name: string;
   className?: string;
   ingredients: Ingredient[];
-  items?: any[];
+  items: ProductItem[];
   onClickAddCart?: VoidFunction;
 }
 
@@ -39,7 +39,12 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   );
 
   const textDetails = "30 см, традиционное тесто 30";
-  const totalPrice = 350;
+
+  const pizzaPrice = items.find(
+    (item) => item.pizzaType === type && item.size === size
+  )?.price;
+
+  const totalPrice = pizzaPrice;
 
   return (
     <div className={cn(className, "flex flex-1")}>
