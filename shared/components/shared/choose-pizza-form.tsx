@@ -40,11 +40,14 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 
   const textDetails = "30 см, традиционное тесто 30";
 
-  const pizzaPrice = items.find(
-    (item) => item.pizzaType === type && item.size === size
-  )?.price;
+  const pizzaPrice =
+    items.find((item) => item.pizzaType === type && item.size === size)
+      ?.price || 0;
+  const totalIngredientsPrice = ingredients
+    .filter((item) => selectedIngredients.has(item.id))
+    .reduce((acc, ingredient) => acc + ingredient.price, 0);
 
-  const totalPrice = pizzaPrice;
+  const totalPrice = pizzaPrice + totalIngredientsPrice;
 
   return (
     <div className={cn(className, "flex flex-1")}>
