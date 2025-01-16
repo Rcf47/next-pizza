@@ -98,6 +98,9 @@ async function generateData() {
     data: [
       // Пицца Пепперони фреш
       generatePizza({ productId: pizza1.id, pizzaType: 1, size: 20 }),
+      generatePizza({ productId: pizza1.id, pizzaType: 1, size: 30 }),
+      generatePizza({ productId: pizza1.id, pizzaType: 1, size: 40 }),
+      generatePizza({ productId: pizza1.id, pizzaType: 2, size: 20 }),
       generatePizza({ productId: pizza1.id, pizzaType: 2, size: 30 }),
       generatePizza({ productId: pizza1.id, pizzaType: 2, size: 40 }),
 
