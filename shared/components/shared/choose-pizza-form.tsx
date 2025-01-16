@@ -38,7 +38,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     new Set<number>([])
   );
 
-  const textDetails = "30 см, традиционное тесто 30";
+  const textDetails = `${size} см, ${mapPizzaType[type]} тесто`;
 
   const pizzaPrice =
     items.find((item) => item.pizzaType === type && item.size === size)
