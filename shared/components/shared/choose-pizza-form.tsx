@@ -10,6 +10,7 @@ import {
   PizzaType,
   pizzaTypes,
 } from "@/shared/constants/pizza";
+import { calcTotalPizzaPrice } from "@/shared/lib/calc-total-pizza-price";
 import { cn } from "@/shared/lib/utils";
 import { Ingredient, ProductItem } from "@prisma/client";
 import React from "react";
@@ -41,35 +42,34 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 
   const textDetails = `${size} см, ${mapPizzaType[type]} тесто`;
 
-  const pizzaPrice =
-    items.find((item) => item.pizzaType === type && item.size === size)
-      ?.price || 0;
-  const totalIngredientsPrice = ingredients
-    .filter((item) => selectedIngredients.has(item.id))
-    .reduce((acc, ingredient) => acc + ingredient.price, 0);
-
-  const totalPrice = pizzaPrice + totalIngredientsPrice;
+  const totalPrice = calcTotalPizzaPrice(
+    type,
+    size,
+    items,
+    ingredients,
+    selectedIngredients
+  );
 
   const handleClickAdd = () => {
     onClickAddCart?.();
   };
 
-  const availabePizzas = items.filter((item) => item.pizzaType === type);
+  const filteredPizzasByType = items.filter((item) => item.pizzaType === type);
   const availablePizzaSizes = pizzaSizes.map((item) => ({
     name: item.name,
     value: item.value,
-    disabled: !availabePizzas.some(
+    disabled: !filteredPizzasByType.some(
       (pizza) => Number(pizza.size) === Number(item.value)
     ),
   }));
 
   React.useEffect(() => {
-    const currentSize = availablePizzaSizes?.find(
+    const isAvailableSize = availablePizzaSizes?.find(
       (item) => Number(item.value) === size && !item.disabled
     );
     const availabelSize = availablePizzaSizes?.find((item) => !item.disabled);
 
-    if (!currentSize && availabelSize) {
+    if (!isAvailableSize && availabelSize) {
       setSize(Number(availabelSize.value) as PizzaSize);
     }
   }, [type]);
