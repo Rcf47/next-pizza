@@ -3,19 +3,9 @@ import { IngredientItem } from "@/shared/components/shared/ingredient-item";
 import { PizzaImage } from "@/shared/components/shared/pizza-image";
 import { Title } from "@/shared/components/shared/title";
 import { Button } from "@/shared/components/ui";
-import {
-  mapPizzaType,
-  PizzaSize,
-  pizzaSizes,
-  PizzaType,
-  pizzaTypes,
-} from "@/shared/constants/pizza";
-import { calcTotalPizzaPrice } from "@/shared/lib/calc-total-pizza-price";
-import { getAvailablePizzaSizes } from "@/shared/lib/get-available-pizza-sizes";
 import { cn } from "@/shared/lib/utils";
 import { Ingredient, ProductItem } from "@prisma/client";
 import React from "react";
-import { useSet } from "react-use";
 
 interface Props {
   imageUrl: string;
