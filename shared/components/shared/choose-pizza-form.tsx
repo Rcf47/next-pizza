@@ -63,6 +63,13 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     ),
   }));
 
+  React.useEffect(() => {
+    const availabelSize = availablePizzaSizes?.find((item) => !item.disabled);
+
+    if (availabelSize) {
+      setSize(Number(availabelSize.value) as PizzaSize);
+    }
+  }, [type]);
   return (
     <div className={cn(className, "flex flex-1")}>
       <PizzaImage imageUrl={imageUrl} size={size} />
