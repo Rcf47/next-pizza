@@ -4,7 +4,7 @@ import { cn } from "@/shared/lib/utils";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
-type Variant = {
+export type Variant = {
   name: string;
   value: string;
   disabled?: boolean;
