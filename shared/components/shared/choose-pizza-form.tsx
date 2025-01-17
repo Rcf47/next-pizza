@@ -11,6 +11,7 @@ import {
   pizzaTypes,
 } from "@/shared/constants/pizza";
 import { calcTotalPizzaPrice } from "@/shared/lib/calc-total-pizza-price";
+import { getAvailablePizzaSizes } from "@/shared/lib/get-available-pizza-sizes";
 import { cn } from "@/shared/lib/utils";
 import { Ingredient, ProductItem } from "@prisma/client";
 import React from "react";
@@ -54,14 +55,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     onClickAddCart?.();
   };
 
-  const filteredPizzasByType = items.filter((item) => item.pizzaType === type);
-  const availablePizzaSizes = pizzaSizes.map((item) => ({
-    name: item.name,
-    value: item.value,
-    disabled: !filteredPizzasByType.some(
-      (pizza) => Number(pizza.size) === Number(item.value)
-    ),
-  }));
+  const availablePizzaSizes = getAvailablePizzaSizes(type, items);
 
   React.useEffect(() => {
     const isAvailableSize = availablePizzaSizes?.find(
