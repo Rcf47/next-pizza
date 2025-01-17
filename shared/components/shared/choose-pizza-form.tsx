@@ -64,9 +64,12 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   }));
 
   React.useEffect(() => {
+    const currentSize = availablePizzaSizes?.find(
+      (item) => Number(item.value) === size && !item.disabled
+    );
     const availabelSize = availablePizzaSizes?.find((item) => !item.disabled);
 
-    if (availabelSize) {
+    if (!currentSize && availabelSize) {
       setSize(Number(availabelSize.value) as PizzaSize);
     }
   }, [type]);
