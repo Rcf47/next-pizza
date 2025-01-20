@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Sheet,
@@ -11,6 +13,8 @@ import {
 import Link from "next/link";
 import { Button } from "@/shared/components/ui";
 import { ArrowRight } from "lucide-react";
+import { CartDrawerItem } from "@/shared/components/shared/cart-drawer-item";
+import { getCartItemDetails } from "@/shared/lib/get-cart-item-details";
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
@@ -22,7 +26,14 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
             В корзине <span className="font-bold">3 товара</span>
           </SheetTitle>
         </SheetHeader>
-        {/* Items */}
+        <CartDrawerItem
+          id={1}
+          imageUrl={"/pizza/peperonifresh.avif"}
+          details={getCartItemDetails([{ name: "hello" }], 2, 30)}
+          name={"Чоризо Фреш"}
+          price={419}
+          quantity={1}
+        />
         <SheetFooter className="-mx-6 bg-white p-8">
           <div className="w-full">
             <div className="flex mb-4">
