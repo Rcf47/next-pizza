@@ -138,7 +138,7 @@ async function generateData() {
     data: [
       {
         userId: 1,
-        totalAmount: 0,
+        totalAmount: 650,
         token: "111111",
       },
       {
