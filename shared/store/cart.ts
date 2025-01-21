@@ -1,8 +1,10 @@
+import { CartStateItem } from "@/shared/lib/get-cart-details";
+
 export interface CartState {
   loading: boolean;
   error: boolean;
   totalAmount: number;
-  items: ICartItem[];
+  items: CartStateItem[];
 
   // Получение товаров из корзины
   fetchCartItems: () => Promise<void>;
