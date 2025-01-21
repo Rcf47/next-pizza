@@ -1,3 +1,4 @@
+import { calcCartItemTotalPrice } from "@/shared/lib/calc-cart-item-total-price";
 import { CartDTO } from "@/shared/services/dto/cart.dto";
 
 export type CartStateItem = {
@@ -22,7 +23,7 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
     quantity: item.quantity,
     name: item.productItem.product.name,
     imageUrl: item.productItem.product.imageUrl,
-    price: calcCartItemTotalPrice(),
+    price: calcCartItemTotalPrice(item),
     pizzaSize: item.productItem.size,
     pizzaType: item.productItem.pizzaType,
     disabled: false,
