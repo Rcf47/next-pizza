@@ -26,14 +26,18 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
             В корзине <span className="font-bold">3 товара</span>
           </SheetTitle>
         </SheetHeader>
-        <CartDrawerItem
-          id={1}
-          imageUrl={"/pizza/peperonifresh.avif"}
-          details={getCartItemDetails([{ name: "hello" }], 2, 30)}
-          name={"Чоризо Фреш"}
-          price={419}
-          quantity={1}
-        />
+        <div className="-mx-6 mt-5 overflow-auto flex-1">
+          <div className="mb-2">
+            <CartDrawerItem
+              id={1}
+              imageUrl={"/pizza/peperonifresh.avif"}
+              details={getCartItemDetails([{ name: "Цыпленок" }], 2, 30)}
+              name={"Чоризо Фреш"}
+              price={419}
+              quantity={1}
+            />
+          </div>
+        </div>
         <SheetFooter className="-mx-6 bg-white p-8">
           <div className="w-full">
             <div className="flex mb-4">
