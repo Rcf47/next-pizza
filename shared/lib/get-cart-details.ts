@@ -9,3 +9,5 @@ export type CartStateItem = {
   pizzaType?: number | null;
   ingredients: Array<{ name: string; price: number }>;
 };
+
+export const getCartDetails = (data: any) => {};
