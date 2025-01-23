@@ -20,6 +20,16 @@ import { useCart } from "@/shared/hooks/useCart";
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
 
+  const onClickCountButton = (
+    id: number,
+    quantity: number,
+    type: "plus" | "minus"
+  ) => {
+    const newQuantity = type === "plus" ? quantity + 1 : quantity - 1;
+    updateItemQuantity(id, newQuantity);
+  };
+
+  console.log(items);
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -44,6 +54,10 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                 name={item.name}
                 price={item.price}
                 quantity={item.quantity}
+                disabled={item.disabled}
+                onClickCountButton={(type) =>
+                  onClickCountButton(item.id, item.quantity, type)
+                }
               />
             ))}
           </div>
