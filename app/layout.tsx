@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Nunito, Roboto_Mono } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 const nunito = Nunito({
   subsets: ["cyrillic"],
@@ -26,6 +27,7 @@ export default function MainLayout({
         className={`${nunito.variable} ${roboto_mono.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
