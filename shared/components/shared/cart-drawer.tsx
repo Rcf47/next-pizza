@@ -29,7 +29,6 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
     updateItemQuantity(id, newQuantity);
   };
 
-  console.log(items);
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
