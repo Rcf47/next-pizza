@@ -1,6 +1,6 @@
+import { Providers } from "@/shared/components/shared/providers";
 import "./globals.css";
 import { Nunito, Roboto_Mono } from "next/font/google";
-import { Toaster } from "react-hot-toast";
 
 const nunito = Nunito({
   subsets: ["cyrillic"],
@@ -26,8 +26,7 @@ export default function MainLayout({
       <body
         className={`${nunito.variable} ${roboto_mono.variable} antialiased`}
       >
-        {children}
-        <Toaster />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
