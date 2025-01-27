@@ -19,7 +19,7 @@ export interface Filters {
   sizes: Set<string>;
   pizzaTypes: Set<string>;
   selectedIngredients: Set<string>;
-  price: PriceProps;
+  prices: PriceProps;
 }
 
 export const useFilters = (): ReturnProps => {
