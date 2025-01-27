@@ -15,6 +15,13 @@ interface ReturnProps extends Filters {
   setSelectedIngredients: (value: string) => void;
 }
 
+export interface Filters {
+  sizes: Set<string>;
+  pizzaTypes: Set<string>;
+  selectedIngredients: Set<string>;
+  price: PriceProps;
+}
+
 export const useFilters = (): ReturnProps => {
   const searchParams = useSearchParams();
 

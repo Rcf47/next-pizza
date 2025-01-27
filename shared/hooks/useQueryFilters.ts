@@ -3,13 +3,6 @@ import { useRouter } from "next/navigation";
 import qs from "qs";
 import React from "react";
 
-export interface Filters {
-  sizes: Set<string>;
-  pizzaTypes: Set<string>;
-  selectedIngredients: Set<string>;
-  price: PriceProps;
-}
-
 export const useQueryFilters = (filters: Filters) => {
   const router = useRouter();
 
