@@ -2,16 +2,8 @@ import { Api } from "@/shared/services/api-client";
 import { Ingredient } from "@prisma/client";
 import React from "react";
 
-type IngredientItem = Pick<Ingredient, "id" | "name">;
-
-interface Ingredients {
-  ingredients: IngredientItem[];
-}
-
 export const useIngredients = () => {
-  const [ingredients, setIngredients] = React.useState<
-    Ingredients["ingredients"]
-  >([]);
+  const [ingredients, setIngredients] = React.useState<Ingredient[]>([]);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -19,14 +11,9 @@ export const useIngredients = () => {
       try {
         setLoading(true);
         const ingredients = await Api.ingredients.getAll();
-        setIngredients(
-          ingredients.map((ingredient) => ({
-            id: ingredient.id,
-            name: ingredient.name,
-          }))
-        );
+        setIngredients(ingredients);
       } catch (error) {
-        console.error(error);
+        console.log(error);
       } finally {
         setLoading(false);
       }
