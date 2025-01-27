@@ -62,6 +62,7 @@ export async function POST(req: NextRequest) {
         ingredients: { every: { id: { in: data.ingredients } } },
       },
     });
+
     if (findCartItem) {
       await prisma.cartItem.update({
         where: {
