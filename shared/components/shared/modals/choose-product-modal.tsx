@@ -1,15 +1,13 @@
 "use client";
 
-import { ProductWithRelations } from "@/@types/product";
-import { ChoosePizzaForm } from "@/shared/components/shared/choose-pizza-form";
-import { ChooseProductForm } from "@/shared/components/shared/choose-product-form";
+import { ProductWithRelations } from "@/@types/prisma";
+import { ProductForm } from "@/shared/components/shared/product-form";
 import { Dialog } from "@/shared/components/ui";
 import { DialogContent } from "@/shared/components/ui/dialog";
 import { cn } from "@/shared/lib/utils";
-import { useCartStore } from "@/shared/store/cart";
+import { DialogTitle } from "@radix-ui/react-dialog";
 import { useRouter } from "next/navigation";
 import React from "react";
-import toast from "react-hot-toast";
 
 interface Props {
   product: ProductWithRelations;
@@ -18,28 +16,6 @@ interface Props {
 
 export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
   const router = useRouter();
-  const firstItem = product.items[0];
-  const isPizzaForm = Boolean(firstItem.pizzaType);
-  const addCartItem = useCartStore((state) => state.addCartItem);
-
-  const onAddProduct = () => {
-    addCartItem({
-      productItemId: firstItem.id,
-    });
-  };
-
-  const onAddPizza = async (productItemId: number, ingredients: number[]) => {
-    try {
-      await addCartItem({
-        productItemId,
-        ingredients,
-      });
-      toast.success("Пицца добавлена в корзину");
-    } catch (error) {
-      toast.error("Не удалось добавить пиццу в корзину");
-      console.error(error);
-    }
-  };
 
   return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -49,21 +25,13 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           className
         )}
       >
-        {isPizzaForm ? (
-          <ChoosePizzaForm
-            imageUrl={product.imageUrl}
-            name={product.name}
-            ingredients={product.ingredients}
-            items={product.items}
-            onSubmit={onAddPizza}
-          />
+        <DialogTitle className="p-5 font-bold text-lg">
+          Выберите продукт
+        </DialogTitle>
+        {true ? (
+          <ProductForm product={product} onSubmit={() => router.back()} />
         ) : (
-          <ChooseProductForm
-            imageUrl={product.imageUrl}
-            name={product.name}
-            onSubmit={onAddProduct}
-            price={firstItem.price}
-          />
+          <div>Hello</div>
         )}
       </DialogContent>
     </Dialog>
