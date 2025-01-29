@@ -1,18 +1,16 @@
-import { Filters } from "@/shared/hooks/useQueryFilters";
 import { useSearchParams } from "next/navigation";
-import React from "react";
 import { useSet } from "react-use";
+import React from "react";
 
-export interface PriceProps {
+interface PriceProps {
   priceFrom?: number;
   priceTo?: number;
 }
 
-interface ReturnProps extends Filters {
-  setPrice: (name: keyof PriceProps, value: number) => void;
-  setPizzaTypes: (value: string) => void;
-  setSizes: (value: string) => void;
-  setSelectedIngredients: (value: string) => void;
+interface QueryFilters extends PriceProps {
+  pizzaTypes: string;
+  sizes: string;
+  ingredients: string;
 }
 
 export interface Filters {
@@ -22,48 +20,60 @@ export interface Filters {
   prices: PriceProps;
 }
 
-export const useFilters = (): ReturnProps => {
-  const searchParams = useSearchParams();
+interface ReturnProps extends Filters {
+  setPrices: (name: keyof PriceProps, value: number) => void;
+  setPizzaTypes: (value: string) => void;
+  setSizes: (value: string) => void;
+  setSelectedIngredients: (value: string) => void;
+}
 
-  /* Ingredients filter */
+export const useFilters = (): ReturnProps => {
+  const searchParams = useSearchParams() as unknown as Map<
+    keyof QueryFilters,
+    string
+  >;
+
   const [selectedIngredients, { toggle: toggleIngredients }] = useSet(
     new Set<string>(searchParams.get("ingredients")?.split(","))
   );
 
-  /* Sizes filter */
   const [sizes, { toggle: toggleSizes }] = useSet(
     new Set<string>(
-      searchParams.get("sizes") ? searchParams.get("sizes")?.split(",") : []
+      searchParams.has("sizes") ? searchParams.get("sizes")?.split(",") : []
     )
   );
 
-  /* PizzaTypes filter */
   const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(
     new Set<string>(
-      searchParams.get("pizzaTypes")
+      searchParams.has("pizzaTypes")
         ? searchParams.get("pizzaTypes")?.split(",")
         : []
     )
   );
 
-  /* Price filter */
-  const [price, setPrice] = React.useState<PriceProps>({
+  const [prices, setPrices] = React.useState<PriceProps>({
     priceFrom: Number(searchParams.get("priceFrom")) || undefined,
     priceTo: Number(searchParams.get("priceTo")) || undefined,
   });
 
   const updatePrice = (name: keyof PriceProps, value: number) => {
-    setPrice((prev) => ({ ...prev, [name]: value }));
+    setPrices((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  return {
-    sizes,
-    pizzaTypes,
-    selectedIngredients,
-    price,
-    setPrice: updatePrice,
-    setPizzaTypes: togglePizzaTypes,
-    setSizes: toggleSizes,
-    setSelectedIngredients: toggleIngredients,
-  };
+  return React.useMemo(
+    () => ({
+      sizes,
+      pizzaTypes,
+      selectedIngredients,
+      prices,
+      setPrices: updatePrice,
+      setPizzaTypes: togglePizzaTypes,
+      setSizes: toggleSizes,
+      setSelectedIngredients: toggleIngredients,
+    }),
+    [sizes, pizzaTypes, selectedIngredients, prices]
+  );
 };
