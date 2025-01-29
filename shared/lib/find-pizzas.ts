@@ -45,6 +45,10 @@ export const findPizzas = async (params: GetSearchParams) => {
               pizzaType: {
                 in: pizzaTypes,
               },
+              price: {
+                gte: minPrice,
+                lte: maxPrice,
+              },
             },
           },
         },
