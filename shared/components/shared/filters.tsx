@@ -23,8 +23,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
   }));
 
   const updatePrices = (prices: number[]) => {
-    filters.setPrice("priceFrom", prices[0]);
-    filters.setPrice("priceTo", prices[1]);
+    filters.setPrices("priceFrom", prices[0]);
+    filters.setPrices("priceTo", prices[1]);
   };
 
   return (
@@ -63,9 +63,9 @@ export const Filters: React.FC<Props> = ({ className }) => {
             placeholder="0"
             min={0}
             max={1000}
-            value={String(filters.price.priceFrom)}
+            value={String(filters.prices.priceFrom)}
             onChange={(event) =>
-              filters.setPrice("priceFrom", Number(event.target.value))
+              filters.setPrices("priceFrom", Number(event.target.value))
             }
           />
           <Input
@@ -73,9 +73,9 @@ export const Filters: React.FC<Props> = ({ className }) => {
             placeholder="1000"
             min={100}
             max={1000}
-            value={String(filters.price.priceTo)}
+            value={String(filters.prices.priceTo)}
             onChange={(event) =>
-              filters.setPrice("priceTo", Number(event.target.value))
+              filters.setPrices("priceTo", Number(event.target.value))
             }
           />
         </div>
@@ -83,7 +83,10 @@ export const Filters: React.FC<Props> = ({ className }) => {
           min={0}
           max={1000}
           step={10}
-          value={[filters.price.priceFrom || 0, filters.price.priceTo || 1000]}
+          value={[
+            filters.prices.priceFrom || 0,
+            filters.prices.priceTo || 1000,
+          ]}
           onValueChange={updatePrices}
         />
         <CheckboxFiltersGroup
