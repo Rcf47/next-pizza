@@ -8,13 +8,18 @@ import { updateCartTotalAmount } from "@/shared/lib/update-cart-total-amount";
 export async function GET(req: NextRequest) {
   try {
     const token = req.cookies.get("cartToken")?.value;
+
     if (!token) {
       return NextResponse.json({ totalAmount: 0, items: [] });
     }
 
     const userCart = await prisma.cart.findFirst({
       where: {
-        token,
+        OR: [
+          {
+            token,
+          },
+        ],
       },
       include: {
         items: {
@@ -33,7 +38,7 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    return NextResponse.json({ userCart });
+    return NextResponse.json(userCart);
   } catch (error) {
     console.log("[CART_GET] Server error", error);
     return NextResponse.json(
@@ -59,10 +64,15 @@ export async function POST(req: NextRequest) {
       where: {
         cartId: userCart.id,
         productItemId: data.productItemId,
-        ingredients: { every: { id: { in: data.ingredients } } },
+        ingredients: {
+          every: {
+            id: { in: data.ingredients },
+          },
+        },
       },
     });
 
+    // Если товар был найден, делаем +1
     if (findCartItem) {
       await prisma.cartItem.update({
         where: {
@@ -82,12 +92,11 @@ export async function POST(req: NextRequest) {
         },
       });
     }
+
     const updatedUserCart = await updateCartTotalAmount(token);
 
     const resp = NextResponse.json(updatedUserCart);
-
     resp.cookies.set("cartToken", token);
-
     return resp;
   } catch (error) {
     console.log("[CART_POST] Server error", error);
