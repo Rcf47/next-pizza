@@ -1,5 +1,5 @@
-import { axiosInstance } from "@/shared/services/axios-instance";
-import { CartDTO, CreateCartItemValues } from "@/shared/services/dto/cart.dto";
+import { axiosInstance } from "./axios-instance";
+import { CartDTO, CreateCartItemValues } from "./dto/cart.dto";
 
 export const getCart = async (): Promise<CartDTO> => {
   return (await axiosInstance.get<CartDTO>("/cart")).data;
@@ -13,8 +13,8 @@ export const updateItemQuantity = async (
     .data;
 };
 
-export const removeCartItem = async (itemId: number): Promise<CartDTO> => {
-  return (await axiosInstance.delete<CartDTO>("/cart/" + itemId)).data;
+export const removeCartItem = async (id: number): Promise<CartDTO> => {
+  return (await axiosInstance.delete<CartDTO>("/cart/" + id)).data;
 };
 
 export const addCartItem = async (
