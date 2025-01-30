@@ -9,10 +9,11 @@ import Link from "next/link";
 import React from "react";
 
 interface Props {
+  hasSearch?: boolean;
   className?: string;
 }
 
-export const Header: React.FC<Props> = ({ className }) => {
+export const Header: React.FC<Props> = ({ hasSearch = true, className }) => {
   return (
     <header className={cn("border border-b", className)}>
       <Container className="flex items-center justify-between py-8">
@@ -28,18 +29,18 @@ export const Header: React.FC<Props> = ({ className }) => {
             </div>
           </div>
         </Link>
-        <div className="mx-10 flex-1">
-          <SearchInput />
-        </div>
+        {hasSearch && (
+          <div className="mx-10 flex-1">
+            <SearchInput />
+          </div>
+        )}
         {/* Правая часть */}
         <div className="flex items-center gap-3">
           <Button variant="outline" className="flex items-center gap-1">
             <User size={16} />
             Войти
           </Button>
-          <div>
-            <CartButton />
-          </div>
+          <div>{false && <CartButton />}</div>
         </div>
       </Container>
     </header>
