@@ -75,6 +75,7 @@ export async function DELETE(
     });
 
     const updatedUserCart = await updateCartTotalAmount(token);
+
     return NextResponse.json(updatedUserCart);
   } catch (error) {
     console.log("[CART_DELETE] Server error", error);
