@@ -1,6 +1,9 @@
+import { CheckoutItem } from "@/shared/components/shared/checkout-item";
+import { CheckoutItemSkeleton } from "@/shared/components/shared/checkout-item-skeleton";
 import { WhiteBlock } from "@/shared/components/shared/white-block";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import { getCartItemDetails } from "@/shared/lib";
+import { CartStateItem } from "@/shared/lib/get-cart-details";
 import React from "react";
 
 interface Props {
