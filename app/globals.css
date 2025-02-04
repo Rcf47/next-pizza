@@ -40,12 +40,12 @@ html {
     --border: 20 5.9% 90%;
     --input: 0 0% 90%;
     --ring: 24.6 95% 53.1%;
-    --radius: 1rem;
+    --radius: 18px;
   }
 }
 
 * {
-  font-family: var(--font-nunito-sans), sans-serif;
+  font-family: var(--font-nunito), sans-serif;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -80,4 +80,16 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+#nprogress .bar {
+  @apply bg-primary !important;
+}
+
+#nprogress .peg {
+  @apply shadow-md shadow-primary !important;
+}
+
+#nprogress .spinner-icon {
+  @apply border-t-primary border-l-primary !important;
 }
