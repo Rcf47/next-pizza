@@ -1,16 +1,16 @@
 "use client";
 
-import { CartButton } from "@/shared/components/shared/cart-button";
-import { Container } from "@/shared/components/shared/container";
-import { SearchInput } from "@/shared/components/shared/search-input";
-import { Button } from "@/shared/components/ui";
 import { cn } from "@/shared/lib/utils";
-import { User } from "lucide-react";
+import React from "react";
+import { Container } from "./container";
 import Image from "next/image";
 import Link from "next/link";
+import { SearchInput } from "./search-input";
+import { CartButton } from "./cart-button";
 import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
 import toast from "react-hot-toast";
+import { ProfileButton } from "./profile-button";
+import { AuthModal } from "./modals";
 
 interface Props {
   hasSearch?: boolean;
@@ -19,11 +19,12 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({
-  hasCart = true,
   hasSearch = true,
+  hasCart = true,
   className,
 }) => {
   const router = useRouter();
+  const [openAuthModal, setOpenAuthModal] = React.useState(false);
 
   const searchParams = useSearchParams();
 
@@ -47,8 +48,9 @@ export const Header: React.FC<Props> = ({
       }, 1000);
     }
   }, []);
+
   return (
-    <header className={cn("border border-b", className)}>
+    <header className={cn("border-b", className)}>
       <Container className="flex items-center justify-between py-8">
         {/* Левая часть */}
         <Link href="/">
@@ -62,18 +64,23 @@ export const Header: React.FC<Props> = ({
             </div>
           </div>
         </Link>
+
         {hasSearch && (
           <div className="mx-10 flex-1">
             <SearchInput />
           </div>
         )}
+
         {/* Правая часть */}
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="flex items-center gap-1">
-            <User size={16} />
-            Войти
-          </Button>
-          <div>{hasCart && <CartButton />}</div>
+          <AuthModal
+            open={openAuthModal}
+            onClose={() => setOpenAuthModal(false)}
+          />
+
+          <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
+
+          {hasCart && <CartButton />}
         </div>
       </Container>
     </header>
