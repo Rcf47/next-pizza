@@ -1,3 +1,5 @@
+"use client";
+
 import { CartButton } from "@/shared/components/shared/cart-button";
 import { Container } from "@/shared/components/shared/container";
 import { SearchInput } from "@/shared/components/shared/search-input";
