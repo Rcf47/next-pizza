@@ -6,14 +6,46 @@ import { cn } from "@/shared/lib/utils";
 import { User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import React from "react";
+import toast from "react-hot-toast";
 
 interface Props {
   hasSearch?: boolean;
+  hasCart?: boolean;
   className?: string;
 }
 
-export const Header: React.FC<Props> = ({ hasSearch = true, className }) => {
+export const Header: React.FC<Props> = ({
+  hasCart = true,
+  hasSearch = true,
+  className,
+}) => {
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+
+  React.useEffect(() => {
+    let toastMessage = "";
+
+    if (searchParams.has("paid")) {
+      toastMessage = "Заказ успешно оплачен! Информация отправлена на почту.";
+    }
+
+    if (searchParams.has("verified")) {
+      toastMessage = "Почта успешно подтверждена!";
+    }
+
+    if (toastMessage) {
+      setTimeout(() => {
+        router.replace("/");
+        toast.success(toastMessage, {
+          duration: 3000,
+        });
+      }, 1000);
+    }
+  }, []);
   return (
     <header className={cn("border border-b", className)}>
       <Container className="flex items-center justify-between py-8">
@@ -40,7 +72,7 @@ export const Header: React.FC<Props> = ({ hasSearch = true, className }) => {
             <User size={16} />
             Войти
           </Button>
-          <div>{false && <CartButton />}</div>
+          <div>{hasCart && <CartButton />}</div>
         </div>
       </Container>
     </header>
