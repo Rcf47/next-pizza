@@ -3,26 +3,25 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  //url       = env("POSTGRES_PRISMA_URL")
-  url      = env("DATABASE_URL_LOCAL")
-  //directUrl = env("POSTGRES_URL_NON_POOLING")
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model User {
   id Int @id @default(autoincrement())
 
   fullName String
-  email    String   @unique
+  email    String    @unique
   password String
-  role     UserRole @default(USER)
-  verified DateTime
+  role     UserRole  @default(USER)
+  verified DateTime?
 
   provider   String?
   providerId String?
 
   cart             Cart?
-  order            Order[]
+  orders           Order[]
   verificationCode VerificationCode?
 
   createdAt DateTime @default(now())
@@ -30,8 +29,7 @@ model User {
 }
 
 model Category {
-  id Int @id @default(autoincrement())
-
+  id       Int       @id @default(autoincrement())
   name     String    @unique
   products Product[]
 
@@ -62,13 +60,10 @@ model ProductItem {
   size      Int?
   pizzaType Int?
 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
-
   cartItems CartItem[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
 }
 
 model Ingredient {
@@ -104,11 +99,11 @@ model Cart {
 model CartItem {
   id Int @id @default(autoincrement())
 
-  productItem   ProductItem @relation(fields: [productItemId], references: [id])
-  productItemId Int
-
   cart   Cart @relation(fields: [cartId], references: [id])
   cartId Int
+
+  productItem   ProductItem @relation(fields: [productItemId], references: [id])
+  productItemId Int
 
   quantity Int @default(1)
 
@@ -122,7 +117,7 @@ model Order {
   id Int @id @default(autoincrement())
 
   user   User? @relation(fields: [userId], references: [id])
-  userId Int
+  userId Int?
 
   token String
 
@@ -133,9 +128,9 @@ model Order {
   items Json
 
   fullName String
-  address  String
   email    String
   phone    String
+  address  String
   comment  String?
 
   createdAt DateTime @default(now())
@@ -153,6 +148,26 @@ model VerificationCode {
   createdAt DateTime @default(now())
 
   @@unique([userId, code])
+}
+
+model Story {
+  id              Int    @id @default(autoincrement())
+  previewImageUrl String
+
+  items StoryItem[]
+
+  createdAt DateTime @default(now())
+}
+
+model StoryItem {
+  id Int @id @default(autoincrement())
+
+  storyId Int
+  story   Story @relation(fields: [storyId], references: [id])
+
+  sourceUrl String
+
+  createdAt DateTime @default(now())
 }
 
 enum OrderStatus {
