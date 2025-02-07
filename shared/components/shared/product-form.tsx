@@ -6,6 +6,7 @@ import React from "react";
 import toast from "react-hot-toast";
 import { ChoosePizzaForm } from "./choose-pizza-form";
 import { ChooseProductForm } from "./choose-product-form";
+import { useShallow } from "zustand/shallow";
 
 interface Props {
   product: ProductWithRelations;
@@ -16,10 +17,9 @@ export const ProductForm: React.FC<Props> = ({
   product,
   onSubmit: _onSubmit,
 }) => {
-  const [addCartItem, loading] = useCartStore((state) => [
-    state.addCartItem,
-    state.loading,
-  ]);
+  const [addCartItem, loading] = useCartStore(
+    useShallow((state) => [state.addCartItem, state.loading])
+  );
 
   const firstItem = product.items[0];
   const isPizzaForm = Boolean(firstItem.pizzaType);
