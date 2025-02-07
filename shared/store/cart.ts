@@ -1,8 +1,8 @@
-import { create } from "zustand";
 import { Api } from "../services/api-client";
 import { getCartDetails } from "../lib";
 import { CartStateItem } from "../lib/get-cart-details";
 import { CreateCartItemValues } from "../services/dto/cart.dto";
+import { create } from "zustand";
 
 export interface CartState {
   loading: boolean;
@@ -23,7 +23,7 @@ export interface CartState {
   removeCartItem: (id: number) => Promise<void>;
 }
 
-export const useCartStore = create<CartState>((set, get) => ({
+export const useCartStore = create<CartState>((set) => ({
   items: [],
   error: false,
   loading: true,
