@@ -10,7 +10,7 @@ import { CartButton } from "./cart-button";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { ProfileButton } from "./profile-button";
-import { AuthModal } from "./modals";
+import { AuthModal } from "./modals/auth-modal/auth-modal";
 
 interface Props {
   hasSearch?: boolean;
