@@ -1,3 +1,4 @@
+import { Stories } from "@/shared/components";
 import { Container } from "@/shared/components/shared/container";
 import { Filters } from "@/shared/components/shared/filters";
 import { ProductsGroupList } from "@/shared/components/shared/products-group-list";
@@ -22,6 +23,7 @@ export default async function Home({
           (category) => category.products.length > 0
         )}
       />
+      <Stories />
       <Container className="mt-10 pb-14">
         <div className="flex gap-[80px]">
           {/* Фильтрация */}
