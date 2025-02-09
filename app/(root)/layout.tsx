@@ -1,13 +1,12 @@
+import { Header } from "@/shared/components/shared";
 import type { Metadata } from "next";
-import "../globals.css";
-import { Header } from "@/shared/components/shared/header";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Next pizza",
-  description: "My educational project next pizza",
+  title: "Next Pizza | Главная",
 };
 
-export default function RootLayout({
+export default function HomeLayout({
   children,
   modal,
 }: Readonly<{
@@ -16,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <main className="min-h-screen">
-      <Header />
+      <Suspense>
+        <Header />
+      </Suspense>
       {children}
       {modal}
     </main>
