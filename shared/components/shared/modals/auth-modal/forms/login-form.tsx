@@ -7,6 +7,7 @@ import { FormInput } from "../../../form";
 import { Button } from "@/shared/components/ui";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 interface Props {
   onClose?: VoidFunction;
@@ -58,8 +59,8 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
               Введите свою почту, чтобы войти в свой аккаунт
             </p>
           </div>
-          <img
-            src="/assets/images/phone-icon.png"
+          <Image
+            src="/assets/icons/phone-icon.png"
             alt="phone-icon"
             width={60}
             height={60}
