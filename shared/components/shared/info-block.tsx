@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Title } from "./title";
 import Link from "next/link";
 import { cn } from "@/shared/lib/utils";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -49,7 +50,7 @@ export const InfoBlock: React.FC<Props> = ({
         </div>
       </div>
 
-      <img src={imageUrl} alt={title} width={300} />
+      {imageUrl && <Image src={imageUrl} alt={title} width={300} />}
     </div>
   );
 };
