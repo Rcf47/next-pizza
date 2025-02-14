@@ -58,7 +58,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
           {!totalAmount && (
             <div className="flex flex-col items-center justify-center w-72 mx-auto">
               <Image
-                src="/assets/images/empty-box.png"
+                src="/assets/icons/empty-box.png"
                 alt="Empty cart"
                 width={120}
                 height={120}
