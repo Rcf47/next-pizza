@@ -10,7 +10,7 @@ export const _ingredients = [
   {
     name: "Сырный бортик",
     price: 179,
-    imageUrl: "/ingredients/sirniybortik.png",
+    imageUrl: "/assets/images/ingredients/sirniybortik.png",
   },
   {
     name: "Сливочная моцарелла",
@@ -102,62 +102,62 @@ export const _ingredients = [
 export const products = [
   {
     name: "Омлет с ветчиной и грибами",
-    imageUrl: "/breakfast/omletsvetchinoyigribami.avif",
+    imageUrl: "/assets/images/breakfast/omletsvetchinoyigribami.avif",
     categoryId: 2,
   },
   {
     name: "Омлет с пепперони",
-    imageUrl: "/breakfast/omletspeperoni.avif",
+    imageUrl: "/assets/images/breakfast/omletspeperoni.avif",
     categoryId: 2,
   },
   {
     name: "Омлет сырный",
-    imageUrl: "/breakfast/omletsirniy.avif",
+    imageUrl: "/assets/images/breakfast/omletsirniy.avif",
     categoryId: 2,
   },
   {
     name: "Креветки",
-    imageUrl: "/snacks/krevetki.avif",
+    imageUrl: "/assets/images/snacks/krevetki.avif",
     categoryId: 3,
   },
   {
     name: "Омлет с ветчиной и грибами в пите",
-    imageUrl: "/snacks/omletsvetchinoyigribamivpite.avif",
+    imageUrl: "/assets/images/snacks/omletsvetchinoyigribamivpite.avif",
     categoryId: 3,
   },
   {
     name: "Омлет с беконом в пите",
-    imageUrl: "/snacks/omletsbekonomvpite.avif",
+    imageUrl: "/assets/images/snacks/omletsbekonomvpite.avif",
     categoryId: 3,
   },
   {
     name: "Шоколадный молочный коктейль",
-    imageUrl: "/cocktail/shokoladnomolochniykoktel.avif",
+    imageUrl: "/assets/images/cocktail/shokoladnomolochniykoktel.avif",
     categoryId: 4,
   },
   {
     name: "Классический молочный коктейль",
-    imageUrl: "/cocktail/klassicheskiykoktel.avif",
+    imageUrl: "/assets/images/cocktail/klassicheskiykoktel.avif",
     categoryId: 4,
   },
   {
     name: "Клубничный молочный коктейль",
-    imageUrl: "/cocktail/klubnichniykoktel4.png",
+    imageUrl: "/assets/images/cocktail/klubnichniykoktel4.png",
     categoryId: 4,
   },
   {
     name: "Какао",
-    imageUrl: "/drinks/kakao.avif",
+    imageUrl: "/assets/images/drinks/kakao.avif",
     categoryId: 5,
   },
   {
     name: "Добрый Кола",
-    imageUrl: "/drinks/dobriykola.avif",
+    imageUrl: "/assets/images/drinks/dobriykola.avif",
     categoryId: 5,
   },
   {
     name: "Вода BonaAqua негазированная",
-    imageUrl: "/drinks/vodabonaqua.avif",
+    imageUrl: "/assets/images/drinks/vodabonaqua.avif",
     categoryId: 5,
   },
 ];
